@@ -61,12 +61,17 @@ class Buyer {
     int price;
     int count;
     Product[] List;
-    int index = 0;
+    int top;
     Buyer(){
         this.price = 0;
         this.count = 0;
         List = new Product[10];
+        
     }
+    
+    
+    
+    
 
     void Buy(Product n) {// 구매자가 어떤 물건의 정보를 알아야한다 (그 물건의 가격정보 얻어올 수있다.)
         
@@ -82,7 +87,6 @@ class Buyer {
                 
             }
         }
-        
     }
     
     void summary() {

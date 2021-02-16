@@ -81,16 +81,26 @@ class Buyer {
     int top;
     int bonuspoint;
     int price;
-    String str;
     ArrayList<Product> cart;
     
     
     Buyer(int money){
         this.money  = money;
-        
+        top = -1;
         this.cart = new ArrayList<Product>();
     }
     
+    boolean isEmpty() {
+        return (top == -1);
+    }
+    
+    boolean isFull() {
+        return (top == cart.size());
+    }
+    
+    void cancel() {
+        
+    }
 
     void buy(Product n) {
         cart.add(n);
@@ -107,6 +117,7 @@ class Buyer {
         if(this.money >= this.price) {
             int change = this.money - this.price;
             System.out.printf("구매하신 총 가격: [%d원] 잔액: [%d원]\n",price,change);
+            System.out.printf("마일리지는 [%d포인트]입니다", bonuspoint);
         }else {
             System.out.println("잔액이 부족합니다.");
             int change = -(this.money - this.price);
