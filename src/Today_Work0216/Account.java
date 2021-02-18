@@ -13,7 +13,7 @@ public class Account {
     public Account(String accountNo, String name) {
         this.accountNo = accountNo;
         this.name = name;
-        transactions = new ArrayList();
+        transactions = new ArrayList<Transaction>();
     }
 
     public String getAccountNo() {
@@ -36,45 +36,41 @@ public class Account {
 
     public void deposit(long amount) {
         balance += amount;
-        Transaction t = new Transaction();
-
-        SimpleDateFormat sdfdate = new SimpleDateFormat("yyyy/MM/dd");
-        String sdfdat = sdfdate.format(Calendar.getInstance().getTime());
-
-        SimpleDateFormat sdftime = new SimpleDateFormat("HH:mm:ss");
-        String sdftim = sdfdate.format(Calendar.getInstance().getTime());
-
-        t.setAmount(amount);
-        t.setBalance(balance);
-        t.setKind("입금");
-        t.setTransactionDate(sdfdat);
-        t.setTransactionTime(sdftim);
-        transactions.add(t);
+        newn(amount, "입금");
 
     }
 
     public void withdraw(long amount) {
         balance -= amount;
+        newn(amount, "출금");
+    }
+    
+    public void newn(long amount, String kind) {
         Transaction t = new Transaction();
 
         SimpleDateFormat sdfdate = new SimpleDateFormat("yyyy/MM/dd");
         String sdfdat = sdfdate.format(Calendar.getInstance().getTime());
 
         SimpleDateFormat sdftime = new SimpleDateFormat("HH:mm:ss");
-        String sdftim = sdfdate.format(Calendar.getInstance().getTime());
+        String sdftim = sdftime.format(Calendar.getInstance().getTime());
 
         t.setAmount(amount);
         t.setBalance(balance);
-        t.setKind("출금");
+        t.setKind(kind);
         t.setTransactionDate(sdfdat);
         t.setTransactionTime(sdftim);
         transactions.add(t);
     }
 
     public ArrayList<Transaction> getTransactions() {
+        ArrayList<Transaction> value = new ArrayList<Transaction>();
+        System.out.println("계좌 정보");
+        for(Transaction a : transactions) {
+            value.add(a);
+            System.out.println(a);
+        }
         
-        return transactions;
-
+        return value;
     }
 
 }

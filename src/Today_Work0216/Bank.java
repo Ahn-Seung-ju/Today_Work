@@ -7,16 +7,20 @@ public class Bank {
     private ArrayList<Account> accounts;
     private int totalAccount;
     
+    //생성자
     public Bank(){
-        accounts = new ArrayList();
+        accounts = new ArrayList<Account>();
+        //Account a = new Account(    , null);
     }
     
+    //계좌 계설
     public void addAccount(String accountNo, String name) {
-        Account account = new Account(accountNo, name);
-        accounts.add(account);
+        //Account account = new Account(accountNo, name);//굳이 만들필요가 없고
+        accounts.add(new Account(accountNo, name));//새로운 Account 객체를 add를 하면서 넣는다
         ++totalAccount;
     }
     
+    //계좌 번호로 찾기
     public Account getAccount(String accountNo) {
         Account value = null;
         for(Account a : accounts) {
@@ -27,7 +31,9 @@ public class Bank {
         return value;
     }
     
+    //계좌 이름으로 찾기
     public ArrayList<Account> findAccounts(String name) {
+        
         ArrayList<Account> value = new ArrayList<Account>();
         for(Account a : accounts) {
             if(a.getName().equals(name)) {
@@ -53,7 +59,6 @@ public class Bank {
     public int getTotalAccount() {
         System.out.println("총 계좌 갯수: " + totalAccount);
         return totalAccount;
-        
     }
 
 }

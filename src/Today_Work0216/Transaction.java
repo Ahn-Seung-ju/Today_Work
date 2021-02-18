@@ -1,6 +1,11 @@
 package Today_Work0216;
 
 public class Transaction {
+    @Override
+    public String toString() {
+        return "Transaction [transactionDate=" + transactionDate + ", transactionTime=" + transactionTime + ", kind="
+                + kind + ", amount=" + amount + ", balance=" + balance + "]";
+    }
     private String transactionDate;
     private String transactionTime;
     private String kind;
